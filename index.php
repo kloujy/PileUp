@@ -2,11 +2,17 @@
 require_once __DIR__.'/req/init.php';
 
 $url = isset($_SERVER['PATH_INFO']) ? explode('/', ltrim($_SERVER['PATH_INFO'],'/')) : '/';
-var_dump($url);
+
 define('_DEFVAR', 1);
 // die();
+
+if(empty($_SESSION['user'])){
+    redirect('login');
+}
+
 if ($url == '/'){
     //https://broker.wuaze.com/
+    //https://cooltext.com/Edit-Logo?LogoId=4549110457
     // This is the home page
     // Initiate the home controller
     // and render the home view
